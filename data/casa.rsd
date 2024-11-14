@@ -1,0 +1,30 @@
+## GRID, X, Y, Z
+GRID, 1, 0.0, 0.0, 0.0
+GRID, 2, 6.0, 0.0, 0.0
+GRID, 3, 12.0, 0.0, 0.0
+GRID, 4, 0.0, 2.7, 0.0
+GRID, 5, 6.0, 2.7, 0.0
+GRID, 6, 12.0, 2.7, 0.0
+
+# baldrame
+## CBAR, ID, NODE ID, NODE ID, NAME
+CBAR, 1, 1, 2, 2, V001
+CBAR, 2, 2, 3, 3, V002
+
+# Pilares
+CBAR, 3, 1, 4, 4, P1
+CBAR, 4, 2, 5, 0, P2
+CBAR, 5, 3, 6, 0, P3
+
+# Vigas teto
+CBAR, 6, 4, 5, 0, V101
+CBAR, 7, 5, 6, 0, V102
+
+## FORCE, ID, NODE ID, FORCE X, FORCE Y, FORCE Z, NAME
+FORCE, 1, 1, 0.0, 520.0, 0.0
+
+## MOMENT, ID, NODE ID, MOMENT X, MOMENT Y, MOMENT Z, NAME
+
+SPC, 1, 3
+SPC, 2, 3
+SPC, 4, 12
