@@ -16,7 +16,7 @@ void print_main_menu()
     printf("\n");
     cli_opcoes_3menu("E", "Analisar estrutura", "M", "Memória de cálculo", "N", "Quantitativos");
     printf("\n");
-    cli_opcao_menu("X", "Sair");
+    cli_opcao_menu("Z", "Encerrar programa");
 }
 
 int main(int arg, char const *args[])
@@ -68,6 +68,10 @@ int main(int arg, char const *args[])
         case 'M':
             // strcpy(descricao_opcao, "Memória de cálculo");
             break;
+        case 'Z':
+            cli_clear_console();
+            exit(0);
+            break;
         default:
             // strcpy(descricao_opcao, "Opção não existe");
             break;
@@ -79,7 +83,7 @@ int main(int arg, char const *args[])
 
     // for (int i = 0; i < sizeof(&args); i++)
     // {
-        // printf("%s\n", args[i]);
+    // printf("%s\n", args[i]);
     // }
 
     // Node nodes[MAX_NODES];

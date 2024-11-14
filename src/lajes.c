@@ -69,7 +69,7 @@ void lajes_listar_reacoes()
 
     LajeMacicaReacoesResult *result = lajes_calcular_reacoes(lajes[i]);
 
-    printf("%-6s %3d   %10.2f %10.2f %10.2f %10.2f %10.2f %6.2f %10.2f %10.3f %10.3f %10.3f\n", lajes[i]->id, lajes[i]->caso, lajes[i]->lx, lajes[i]->ly, lajes[i]->h, Q, 24.0f, result->lambda, result->vx, result->v_x, result->vy, result->v_y);
+    printf("%-6s %3d   %'10.2f %'10.2f %'10.2f %'10.2f %'10.2f %'6.2f %'10.3f %'10.3f %'10.3f %'10.3f\n", lajes[i]->id, lajes[i]->caso, lajes[i]->lx, lajes[i]->ly, lajes[i]->h, Q, 24.0f, result->lambda, result->vx, result->v_x, result->vy, result->v_y);
     cli_text_reset();
 
     result = NULL;
@@ -144,7 +144,7 @@ void lajes_listar_flechas()
       cli_text_color(RED);
     }
 
-    printf("%-6s %3d   %10.2f %10.2f %10.2f %10.2f %10.2f %6.2f %10.2f %10.3f %10.3f %10.3f %10.3f %-20s\n", lajes[i]->id, lajes[i]->caso, lajes[i]->lx, lajes[i]->ly, lajes[i]->h, Q, 24.0f, lambda, alfa, flechaImediata, flechaTotal, flechaFinal, flechaLimite, verificacao);
+    printf("%-6s %3d   %'10.2f %'10.2f %'10.2f %'10.2f %'10.2f %'6.2f %'10.2f %'10.3f %'10.3f %'10.3f %'10.3f %-20s\n", lajes[i]->id, lajes[i]->caso, lajes[i]->lx, lajes[i]->ly, lajes[i]->h, Q, 24.0f, lambda, alfa, flechaImediata, flechaTotal, flechaFinal, flechaLimite, verificacao);
     cli_text_reset();
     result = NULL;
     free(result);
@@ -214,7 +214,7 @@ void lajes_menu()
       // strcpy(lajes_descricao_opcao, "Remover laje");
       break;
     case 'L':
-      // carregar_projeto(lajes, &lajes_contador);
+      carregar_projeto(lajes, &lajes_contador);
       break;
     case 'C':
       while (lajes_opcao_selecionada[0] != 'X')
@@ -236,6 +236,10 @@ void lajes_menu()
         case 'D':
           lajes_listar_armaduras();
           break;
+        case 'Z':
+          cli_clear_console();
+          exit(0);
+          break;
         default:
           lajes_listar_flechas();
           break;
@@ -243,6 +247,7 @@ void lajes_menu()
 
         cli_opcoes_3menu("F", "Flechas", "M", "Momentos", "V", "Cortantes");
         cli_opcoes_2menu("R", "Reações de apoio", "D", "Dimensionamentos");
+        cli_opcao_menu("Z", "Encerrar programa");
         cli_text_color(CYN);
         printf("[X] para voltar: ");
         cli_text_reset();
@@ -251,6 +256,11 @@ void lajes_menu()
       }
       break;
     case 'X':
+      exit(0);
+      break;
+    case 'Z':
+      cli_clear_console();
+      exit(0);
       break;
     default:
       break;
@@ -261,7 +271,7 @@ void lajes_menu()
     cli_print_label_programa("CÁLCULO E DIMENSIONAMENTO DE LAGES MACIÇAS");
     cli_opcoes_3menu("N", "Nova laje", "E", "Editar laje", "L", "Carregar lajes");
     cli_opcoes_2menu("R", "Remover laje", "C", "Calcular");
-    cli_opcao_menu("X", "Menu principal");
+    cli_opcoes_2menu("X", "Menu principal", "Z", "Encerrar programa");
     cli_text_color(CYN);
     printf("\nComando [%1s]: ", &lajes_opcao_selecionada);
     cli_text_reset();

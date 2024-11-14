@@ -1,14 +1,12 @@
 #include "file.h"
 
-FILE *tempFile;
-
 void carregar_projeto(LajeMacica *lajes[], int *count)
 {
     FILE *tempFile;
     char linha[140];
     const char DELIMITADOR[] = ";";
 
-    tempFile = fopen("projeto.dat", "r");
+    tempFile = fopen("/Users/rafaeldias/repositories/c/lab-c/projeto.dat", "r");
     if (tempFile != NULL)
     {
         while (fgets(linha, sizeof(linha), tempFile))
